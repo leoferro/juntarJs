@@ -1,0 +1,15 @@
+{
+    "name": "mostrar-na-tela",
+    "version": "1.0.0",
+    "description": "Exemplo de cli",
+    "preferGlobal": true,
+    "bin": {
+        "juntarJs": "./bin/mostrar-tela-cli"
+    },
+    "files": [
+        "./bin"
+    ],
+    "keywords": [],
+    "author": "lheo9266",
+    "license": "MIT"
+}

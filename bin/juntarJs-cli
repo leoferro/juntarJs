@@ -1,0 +1,35 @@
+#!/usr/local/bin/node
+const fs = require('fs')
+const path = require('path')
+
+
+
+function encontrarJs(caminho = './') {
+
+    const arquivosJS = [];
+    const diretorios = [];
+
+    let arquivosPesquisados = fs.readdirSync(caminho)
+
+    arquivosPesquisados.forEach(arquivoPesquisado => {
+
+        var status = fs.statSync((caminho + arquivoPesquisado))
+
+        if (status.isDirectory()) {
+            diretorios.push(caminho + arquivoPesquisado)
+        } else if (path.extname(arquivoPesquisado) == ".js") {
+            arquivosJS.push(caminho + arquivoPesquisado)
+        }
+    })
+
+    diretorios.forEach(diretorio => {
+        let buscaDiretorio = encontrarJs(diretorio + '/')
+        arquivosJS.push(...buscaDiretorio)
+    })
+
+    return arquivosJS
+}
+
+
+
+console.log(encontrarJs())
